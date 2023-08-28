@@ -1,0 +1,20 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: demo-dry-flo
+  namespace: demo-dry-flo
+  labels:
+    app: demo-dry-flo
+    app.kubernetes.io/component: backstage
+    backstage.io/kubernetes-id: demo-dry-flo
+spec:
+  - host: 
+    http:
+      paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: demo-dry-flo-gitops.git
+              port:
+                number: 8080

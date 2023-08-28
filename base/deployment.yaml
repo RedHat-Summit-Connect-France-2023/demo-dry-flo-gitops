@@ -1,0 +1,29 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: demo-dry-flo
+  labels:
+    app.kubernetes.io/part-of: demo-dry-flo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: demo-dry-flo
+  template:
+    metadata:
+      labels:
+        app: demo-dry-flo
+        app.kubernetes.io/component: backstage
+        backstage.io/kubernetes-id: demo-dry-flo
+    spec:
+      containers:
+        - name: demo-dry-flo
+          image: image-registry.openshift-image-registry.svc:5000/demo-dry-flo-dev/demo-dry-flo:latest
+          ports:
+            - name: http-8080
+              containerPort: 8080
+              protocol: TCP
+          resources:
+            limits:
+              memory: '128Mi'
+              cpu: '500m'

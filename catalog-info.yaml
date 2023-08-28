@@ -1,0 +1,19 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: demo-dry-flo
+  annotations:
+    argocd/app-name: -bootstrap
+    tektonci/build-namespace: demo-dry-flo-dev
+    backstage.io/kubernetes-id: demo-dry-flo
+    backstage.io/techdocs-ref: url:https://github.com/RedHat-Summit-Connect-France-2023/demo-dry-flo
+    backstage.io/kubernetes-namespace: demo-dry-flo
+    backstage.io/source-location: url:https://github.com/RedHat-Summit-Connect-France-2023/demo-dry-flo
+    github.com/project-slug: RedHat-Summit-Connect-France-2023/demo-dry-flo
+    janus-idp.io/tekton-enabled : 'true'    
+
+spec:
+  type: api
+  system: system
+  lifecycle: production
+  owner: dev-user
